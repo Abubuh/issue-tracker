@@ -94,7 +94,6 @@ const server = async () => {
     req.logIn(user, (err) => {
       return res.status(204).json();
     });
-  });
 
   
   app.post("/api/login", (req: Request, res: Response, next: NextFunction) => {

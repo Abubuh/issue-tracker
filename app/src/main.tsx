@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { LoggedIn } from './components/LoggedIn'
+import { Home } from './components/Home'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "",
-    element: <LoggedIn />,
+    element: <Home />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
