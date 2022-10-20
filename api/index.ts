@@ -8,6 +8,7 @@ import { DataSource } from "typeorm";
 import { TypeormStore } from "connect-typeorm";
 import { Session } from "./src/entities/Session";
 import { User } from "./src/entities/User";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,7 +23,7 @@ const SQLiteDataSource = new DataSource({
 });
 const sessionStore = new TypeormStore({
   cleanupLimit: 2,
-  ttl: 86400,
+  ttl: 86400
 });
 
 SQLiteDataSource.initialize()
@@ -30,7 +31,7 @@ SQLiteDataSource.initialize()
     .catch((err) => console.log(err));
 
 const server = async () => {
-  // app.use(cors());
+  app.use(cors());
   app.use(express.json());
   app.use("/", express.static("./public"));
   app.use(
@@ -39,6 +40,9 @@ const server = async () => {
       resave: false,
       saveUninitialized: false,
       name: "abubuh.cookie",
+      cookie: {
+        sameSite: false
+      },
       store: sessionStore.connect(SQLiteDataSource.getRepository(Session))
     })
   );
@@ -76,7 +80,7 @@ const server = async () => {
     done(null, user);
   });
 
-  app.post("/signup", async (req: Request, res: Response) => {
+  app.post("/api/signup", async (req: Request, res: Response) => {
     const { name, username, password } = req.body;
     const salt = randomBytes(16).toString("hex");
     const hashedPassword = pbkdf2Sync(password, salt, 310000, 69, "sha256");
@@ -92,7 +96,8 @@ const server = async () => {
     });
   });
 
-  app.post("/login", (req: Request, res: Response, next: NextFunction) => {
+  
+  app.post("/api/login", (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate("local", (err, user, info) => {
       if (!user) {
         return res.status(404).json(info);
@@ -103,7 +108,7 @@ const server = async () => {
     })(req, res, next);
   });
 
-  app.post("/logout", function (req:Request, res:Response, next:NextFunction) {
+  app.post("/api/logout", function (req:Request, res:Response, next:NextFunction) {
     req.logout(function (err) {
       if (err) {
         return next(err);
