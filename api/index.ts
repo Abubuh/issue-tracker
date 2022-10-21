@@ -94,8 +94,8 @@ const server = async () => {
     req.logIn(user, (err) => {
       return res.status(204).json();
     });
+  });
 
-  
   app.post("/api/login", (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate("local", (err, user, info) => {
       if (!user) {
@@ -120,7 +120,7 @@ const server = async () => {
     if (!req.isAuthenticated()) {
       return res.status(400).json({ error: "You must be logged in" });
     }
-    return res.json({ data: "Welcome" });
+    return res.json({ data: SQLiteDataSource.getRepository });
   });
 
   // app.post("/api/users", async (request: Request, response: Response) => {

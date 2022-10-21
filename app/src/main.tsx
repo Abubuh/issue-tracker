@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { Home } from './components/Home'
+import { SignUp } from './components/Signup'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "",
     element: <Home />,
+  },
+  {
+    path: "/Signup",
+    element: <SignUp />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
