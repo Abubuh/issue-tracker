@@ -15,7 +15,7 @@ export function Login() {
       },
       credentials: 'include',
       body: JSON.stringify({"username": username, "password":password})
-    }) 
+    })
     if(res.ok){
       navigate("/")
     }
@@ -24,7 +24,7 @@ export function Login() {
 
   return (
     <div className="">
-      <section className="h-screen bg-violet-300">
+      <section className="h-screen bg-emerald-300">
         <div className="px-6 h-full text-gray-800">
           <div className="flex justify-center items-center flex-wrap h-full">
             <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
@@ -57,7 +57,7 @@ export function Login() {
                   <div className="form-group form-check">
                     <input
                       type="checkbox"
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-400 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input appearance-none h-4 w-4 border border-gray-400 rounded-sm bg-white checked:bg-emerald-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                     />
                     <label className="form-check-label inline-block text-gray-800">
                       Remember me
@@ -70,13 +70,13 @@ export function Login() {
                 <div className="text-center lg:text-left">
                   <button
                     type="button"
-                    className="inline-block px-7 py-3 bg-purple-400 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-emerald-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                     onClick={onSubmit}
                   >
                     Login
                   </button>
                   <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                    Don't have an account? 
+                    Don't have an account?
                     <a
                       href="/Signup"
                       className="text-red-600 hover:text-red-800 focus:text-red-700 transition duration-200 ease-in-out pl-2"

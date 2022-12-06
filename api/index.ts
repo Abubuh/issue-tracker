@@ -120,7 +120,7 @@ const server = async () => {
     if (!req.isAuthenticated()) {
       return res.status(400).json({ error: "You must be logged in" });
     }
-    return res.json({ data: SQLiteDataSource.getRepository });
+    return res.json({ data: "Hello world"});
   });
 
   // app.post("/api/users", async (request: Request, response: Response) => {
