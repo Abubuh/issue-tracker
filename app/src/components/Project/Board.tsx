@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { AddComponent } from './AddComponent'
 import { Component } from './Component'
 
-export const Board = (props: { children: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>>}) => {
+export const Board = (props) => {
+  const [components, setComponents] = useState([])
+
   return (
-    <div className='h-[46rem] bg-teal-100'>{props.children}
-      <Component addComponent={addComponent}/>
+    <div className='flex h-[46rem] bg-teal-100'>
+      {props.children}
     </div>
   )
 }

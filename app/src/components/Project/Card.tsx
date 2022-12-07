@@ -2,14 +2,9 @@ import React, { useState } from "react";
 
 export const Card = (props) => {
   const [input, setInput] = useState("");
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        props.addCard()
-        setInput("")
-    }
 
   return (
-    <form onSubmit={handleSubmit} className="flex border rounded-md bg-emerald-200 w-11/12 border-emerald-400 h-16 mx-auto my-2">
+    <form className="flex border rounded-md bg-emerald-200 w-11/12 border-emerald-400 h-16 mx-auto my-2">
       <input
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter a task"
