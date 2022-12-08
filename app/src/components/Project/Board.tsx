@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { AddComponent } from './AddComponent'
-import { Component } from './Component'
+import { AddColumn } from './AddColumn'
+import { Column } from './Column'
 
 export const Board = (props) => {
-  const [components, setComponents] = useState([])
 
   return (
     <div className='flex h-[46rem] bg-teal-100'>

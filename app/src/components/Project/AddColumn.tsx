@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AddComponent = () => {
+export const AddColumn = () => {
 
   return (
     <div>
