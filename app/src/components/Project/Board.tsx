@@ -5,7 +5,7 @@ import { Column } from './Column'
 export const Board = (props) => {
 
   return (
-    <div className='flex h-[46rem] bg-teal-100'>
+    <div className='flex h-[45rem] w-screen bg-teal-100 overflow-x-scroll'>
       {props.children}
     </div>
   )

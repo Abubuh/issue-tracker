@@ -14,17 +14,17 @@ const reducer = (columns, action) => {
         }
         return column;
       });
-
+    case "addColumn":
+      return [...columns, action.column]
     default:
       return columns;
   }
 };
 
 export const ProjectView = () => {
-  const [cards, setCards] = useState([]);
   const [columns, dispatch] = useReducer(reducer, [
     {
-      title: "component1",
+      title: "Column 1",
       cards: [
         {
           id: 1,
@@ -34,7 +34,7 @@ export const ProjectView = () => {
       ],
     },
     {
-      title: "component 2",
+      title: "Column 2",
       cards: [
         {
           id: 2,
@@ -45,16 +45,6 @@ export const ProjectView = () => {
     },
   ]);
 
-  // const addCard = () => {
-  //     console.log("Helo")
-  //     const card = {
-  //         id: self.crypto.randomUUID() ,
-  //         title: "New card",
-  //         description: "None"
-  //     }
-  //     dispatch({type:"addCard", card})
-  // }
-
   return (
     <>
       <div>
@@ -62,10 +52,6 @@ export const ProjectView = () => {
         <Board>
           {columns.length > 0 &&
             columns.map((column, index) => {
-              // function(title, description){
-              // const oldCards = column.cards
-              // const newCard = {title, description}
-              // oldCards.push(newCard)
               return (
                 <Column
                   title={column.title}
@@ -78,7 +64,7 @@ export const ProjectView = () => {
                 </Column>
               );
             })}
-          <AddColumn />
+          <AddColumn dispatch={dispatch}/>
         </Board>
       </div>
     </>
